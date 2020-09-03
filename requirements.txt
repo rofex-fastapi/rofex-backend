@@ -6,3 +6,5 @@ mysql-connector-python
 PyJwt
 bcrypt
 pydantic
+async-exit-stack
+async-generator
