@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pyrofex
+sqlalchemy
+mysql-connector-python
+PyJwt
+bcrypt
+pydantic
