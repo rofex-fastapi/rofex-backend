@@ -5,16 +5,16 @@ from pydantic import BaseModel
 #Esto seria base
 class UserBase(BaseModel):
     email: str
+    name: str
+    lastname: str
 
 #Esto para crear
 class UserCreate(UserBase):
-    password: str
+    hashed_password: str
 
 #Esto para leer (devolver desde la API), por eso no tiene pass
 class User(UserBase):
     id: int
-    name: str
-    lastname: str
 
     #config de Pydantic
     class Config:
