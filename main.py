@@ -4,10 +4,13 @@ from fastapi import Depends, FastAPI, HTTPException
 
 from sqlalchemy.orm import Session
 
-import crud, models, schemas
-from database import SessionLocal, engine
+from crud import user_crud
+from models import user_model
+from schemas import  user_schema
 
-models.Base.metadata.create_all(bind=engine)
+from database.database import SessionLocal, engine
+
+user_model.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -23,9 +26,9 @@ def get_db():
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/users/", response_model=List[schemas.User])
+@app.get("/users/", response_model=List[user_schema.User])
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = crud.get_users(db, skip=skip, limit=limit)
+    users = user_crud.get_users(db, skip=skip, limit=limit)
     return users
      
 
