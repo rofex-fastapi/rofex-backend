@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api.endpoints import login, users
+from api.router import api_router
 
 app = FastAPI(
   title="FastAPI - Name not defined",
@@ -7,7 +7,7 @@ app = FastAPI(
   version="0.0.1"
 )
 
-app.include_router(users.router)
+app.include_router(api_router)
 
 @app.get("/")
 def read_root():
