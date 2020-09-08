@@ -2,7 +2,6 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-#Esto seria base
 class UserBase(BaseModel):
     email: str
     name: str
