@@ -15,8 +15,7 @@ def get_trade(trade_id: int, db: Session = Depends(deps.get_db)):
     trade = trade_crud.get_trade(db=db, trade_id=trade_id)
     return trade
 
-#Deberia devolver tambien el ID de trade
-@router.post("/trades/", response_model=List[trade_schema.TradeBase])
+@router.post("/trades/", response_model=List[trade_schema.Trade])
 def read_users(user_id: int, skip: int = 0, limit: int = 100, db: Session = Depends(deps.get_db)):
     trades = trade_crud.get_trades(user_id=user_id, db=db, skip=skip, limit=limit)
     return trades

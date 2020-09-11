@@ -6,7 +6,7 @@ from database.database import Base
 class Trade(Base):
     __tablename__ = "trades"
 
-    idtrades                = Column(Integer, primary_key=True, index=True)
+    idtrade                = Column(Integer, primary_key=True, index=True)
     symbol                  = Column(String, index=True)
     size                    = Column(Float, index=True)
     price                   = Column(Float, index=True, unique=True)

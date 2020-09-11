@@ -14,7 +14,7 @@ class TradeBase(BaseModel):
         orm_mode = True
 
 class Trade(TradeBase):
-    id: int
+    idtrade: int
     class Config:
         orm_mode = True
 

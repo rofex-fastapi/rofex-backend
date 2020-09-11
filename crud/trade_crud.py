@@ -5,7 +5,7 @@ from schemas import trade_schema
 
 #READ
 def get_trade(db:Session, trade_id: int):
-    return db.query(trade_model.Trade).filter(trade_model.Trade.idtrades == trade_id).first()
+    return db.query(trade_model.Trade).filter(trade_model.Trade.idtrade == trade_id).first()
 
 def get_trades(db: Session, user_id: int, skip: int = 0, limit: int = 100):
     return db.query(trade_model.Trade).filter(trade_model.Trade.iduser == user_id).limit(limit).all()
