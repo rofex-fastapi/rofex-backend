@@ -9,3 +9,4 @@ async-generator
 python-multipart
 python-jose
 passlib
+bcrypt
