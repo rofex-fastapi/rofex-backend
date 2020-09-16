@@ -17,8 +17,7 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(deps.get_d
     """
     Retrieve all the users.
     """
-    users = user_crud.get_users(db, skip=skip, limit=limit)
-    return users
+    return user_crud.get_users(db, skip=skip, limit=limit) 
 
 @router.post("/users/", response_model=user_schema.User)
 def create_user(user: user_schema.UserCreate, db: Session = Depends(deps.get_db)):
