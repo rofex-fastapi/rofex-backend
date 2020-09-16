@@ -23,7 +23,8 @@ def get_trade(  trade_id: int,
     return trade
 
 @router.post("/trades/", response_model=List[trade_schema.Trade])
-def get_trades(user_id: int, skip: int = 0, limit: int = 100, db: Session = Depends(deps.get_db)):
+def get_trades( user_id: int, skip: int = 0, limit: int = 100, db: Session = Depends(deps.get_db),
+                current_user: user_model.User = Depends(deps.get_current_user)):
     """
     Retrieve all the trades of a user by user ID (authentication required).
     """
@@ -38,7 +39,3 @@ def create_trade(trade: trade_schema.TradeBase, db: Session = Depends(deps.get_d
     """
     return trade_crud.create_trade(db=db, trade=trade)
 
-
-@router.get("/trade/")
-async def get(current_user: user_model.User = Depends(deps.get_current_user)):
-    return current_user
