@@ -17,9 +17,11 @@ trades_rofex = ["DONov20", "DODic20", "DOEne21", "DOFeb21", "DOMar21"]
 
 router = APIRouter()
 
-@router.post("/trade_history/", response_model=List[trade_schema.TradeBaseBase])
-def get_trades_history(trade_symbol: str, 
-                             current_user: user_model.User = Depends(deps.get_current_user)):
+#, response_model=List[trade_schema.TradeBaseBase] not working
+@router.post("/trade_history/")
+def get_trades_history(trade_symbol: str
+                             #,current_user: user_model.User = Depends(deps.get_current_user)
+                             ):
     """
     Retrieve trade history by trade Symbol (authentication required).
     """
