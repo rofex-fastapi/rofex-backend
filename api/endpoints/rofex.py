@@ -20,7 +20,7 @@ router = APIRouter()
 #, response_model=List[trade_schema.TradeBaseBase] not working
 @router.post("/trade_history/")
 def get_trades_history(trade_symbol: str
-                             #,current_user: user_model.User = Depends(deps.get_current_user)
+                        ,current_user: user_model.User = Depends(deps.get_current_user)
                              ):
     """
     Retrieve trade history by trade Symbol (authentication required).
