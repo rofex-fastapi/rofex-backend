@@ -15,9 +15,5 @@ def get_trade_history(trade_symbol: str):
     df = pd.DataFrame(resp["trades"]) 
     del_columns = ["symbol", "servertime", "size"]
     df.drop(del_columns, inplace=True, axis=1)
-    # df = df.set_index(["datetime"])
-    # df.index = pd.to_datetime(df.index)
     di = df.to_json(orient='records')
-    print (di)
-    #return resp["trades"]
     return di
