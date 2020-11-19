@@ -37,5 +37,18 @@ def create_trade(trade: trade_schema.TradeBase, db: Session = Depends(deps.get_d
     """
     Creates a new trade (authentication required).
     """
+    #validar
+    #symbol
+    #price
+    #size
     return trade_crud.create_trade(db=db, trade=trade)
+
+
+@router.post("/delete-trade/")
+def create_trade(trade_id: int, db: Session = Depends(deps.get_db), 
+                current_user: user_model.User = Depends(deps.get_current_user)):
+    """
+    Deletes a trade (authentication required).
+    """
+    return trade_crud.delete_trade(db=db, trade_id=trade_id)
 

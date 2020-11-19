@@ -17,3 +17,14 @@ def create_trade(db: Session, trade: trade_schema.TradeBase):
     db.commit()
     db.refresh(db_trade)
     return db_trade
+
+def delete_trade(db: Session, trade_id: int):
+    try:
+        trade = get_trade(db, trade_id)
+        db.delete(trade)
+        db.commit()
+        return "Se ha eliminado el trade correctamente"
+    except:
+        raise HTTPException(status_code=400, detail="Ha ocurrido un error")
+
+    
