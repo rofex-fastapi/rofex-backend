@@ -19,15 +19,16 @@ router = APIRouter()
 
 #, response_model=List[trade_schema.TradeBaseBase] not working
 @router.post("/trade_history/")
-def get_trades_history(trade_symbol: str
+def get_trades_history(trade_symbol: str, trade_date: date
                         ,current_user: user_model.User = Depends(deps.get_current_user)
                              ):
     """
     Retrieve trade history by trade Symbol (authentication required).
+    Date example: 2020-01-01
     """
     #agregar exception por si no se conecta a la api de rofex
     if trade_symbol in trades_rofex:
-        return get_trade_history(trade_symbol)
+        return get_trade_history(trade_symbol, trade_date)
     raise HTTPException(status_code=400, detail="Invalid trade symbol") # ver codigo de error en wikipedia.
 
 

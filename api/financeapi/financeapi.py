@@ -10,10 +10,12 @@ account = "REM3901"
         
 pyRofex.initialize(user=user, password=password, account=account, environment=pyRofex.Environment.REMARKET)
 
-def get_trade_history(trade_symbol: str): 
-    resp = pyRofex.get_trade_history(trade_symbol, "2020-01-01", date.today())
-    df = pd.DataFrame(resp["trades"]) 
-    del_columns = ["symbol", "servertime", "size"]
-    df.drop(del_columns, inplace=True, axis=1)
-    di = df.to_json(orient='records')
-    return di
+def get_trade_history(trade_symbol: str, trade_date: date): 
+    #date = "2020-01-01"
+    
+    resp = pyRofex.get_trade_history(trade_symbol, trade_date, date.today())
+    # df = pd.DataFrame(resp["trades"]) 
+    # del_columns = ["symbol", "servertime", "size"]
+    # df.drop(del_columns, inplace=True, axis=1)
+    # di = df.to_json(orient='records')
+    return resp
